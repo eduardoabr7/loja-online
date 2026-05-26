@@ -156,7 +156,7 @@
   </div>
   <div class="filter-bar" id="filterBar">
     <button class="filter-btn active" data-cat="todos">Todos</button>
-    
+    <button class="filter-btn active" data-cat="div">Diversos</button>
   </div>
   <div class="product-grid" id="productGrid"></div>
 </section>
@@ -181,11 +181,65 @@
 <footer><p>© 2026 <strong>MinhaLoja</strong>. Todos os direitos reservados. · Powered by <strong>HyperLens</strong></p></footer>
 
 <script>
-const PRODUCTS = [];
+const PRODUCTS = [
+  {
+    "id": 1779828719003,
+    "cat": "div",
+    "title": "Copo térmico 473ml do Brasil HEXA Copa do mundo",
+    "desc": "Copo do Brasil",
+    "price": "R$ 44,90",
+    "oldPrice": "R$ 60,00",
+    "badge": "10%",
+    "link": "https://s.shopee.com.br/9UycPtDrh0",
+    "images": [
+      {
+        "type": "upload",
+        "url": "assets/copo-termico-473ml-do-brasil-hexa-copa-do-mundo/br-11134207-820l8-mmiv5l9ywqh392_resize_w450_nl.webp",
+        "assetPath": "copo-termico-473ml-do-brasil-hexa-copa-do-mundo/br-11134207-820l8-mmiv5l9ywqh392_resize_w450_nl.webp",
+        "mediaKind": "image"
+      },
+      {
+        "type": "upload",
+        "url": "assets/copo-termico-473ml-do-brasil-hexa-copa-do-mundo/br-11134207-820lo-mnpmd5zzb9j695_resize_w450_nl.webp",
+        "assetPath": "copo-termico-473ml-do-brasil-hexa-copa-do-mundo/br-11134207-820lo-mnpmd5zzb9j695_resize_w450_nl.webp",
+        "mediaKind": "image"
+      },
+      {
+        "type": "upload",
+        "url": "assets/copo-termico-473ml-do-brasil-hexa-copa-do-mundo/br-11134207-820lu-mmiv5l9yvbwne0_resize_w450_nl.webp",
+        "assetPath": "copo-termico-473ml-do-brasil-hexa-copa-do-mundo/br-11134207-820lu-mmiv5l9yvbwne0_resize_w450_nl.webp",
+        "mediaKind": "image"
+      },
+      {
+        "type": "upload",
+        "url": "assets/copo-termico-473ml-do-brasil-hexa-copa-do-mundo/br-11134207-820m3-mnpmd5zz9uyq59_resize_w450_nl.webp",
+        "assetPath": "copo-termico-473ml-do-brasil-hexa-copa-do-mundo/br-11134207-820m3-mnpmd5zz9uyq59_resize_w450_nl.webp",
+        "mediaKind": "image"
+      },
+      {
+        "type": "upload",
+        "url": "assets/copo-termico-473ml-do-brasil-hexa-copa-do-mundo/br-11134207-820mf-mnpmd5zzco3m7c_resize_w450_nl.webp",
+        "assetPath": "copo-termico-473ml-do-brasil-hexa-copa-do-mundo/br-11134207-820mf-mnpmd5zzco3m7c_resize_w450_nl.webp",
+        "mediaKind": "image"
+      },
+      {
+        "type": "upload",
+        "url": "assets/copo-termico-473ml-do-brasil-hexa-copa-do-mundo/Copo_Termico_473ml_Personalizado_Brasil_Com_Abridor_integrado_e.mp4",
+        "assetPath": "copo-termico-473ml-do-brasil-hexa-copa-do-mundo/Copo_Termico_473ml_Personalizado_Brasil_Com_Abridor_integrado_e.mp4",
+        "mediaKind": "video"
+      }
+    ],
+    "attrs": {
+      "Marca": "Prime Copos",
+      "Tipo de garantia": "Garantia do Fornecedor",
+      "Material": "Inox, tampa plástico"
+    }
+  }
+];
 /* ================================================================
    FIM DA LISTA DE PRODUTOS
 ================================================================ */
-const CATEGORIES = [];
+const CATEGORIES = [{"key":"div","name":"Diversos"}];
 /* ================================================================ */
 const grid = document.getElementById('productGrid');
 let currentFilter = 'todos';
