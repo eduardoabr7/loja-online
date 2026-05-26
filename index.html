@@ -13,9 +13,11 @@
     :root {
       --bg-base:        #0d0d0d;
       --bg-surface:     #161616;
+      --bg-header:      #0d0d0d;
       --bg-hover:       #1e1e1e;
       --border:         #212121;
       --accent:         #4ce6b8;
+      --background:     #0b1509;
       --accent-dim:     #2ec89a;
       --text-primary:   #f0f0f0;
       --text-secondary: #888;
@@ -26,7 +28,7 @@
       --transition:     0.25s ease;
     }
     body { font-family: 'DM Sans', system-ui, sans-serif; background: var(--bg-base); color: var(--text-primary); min-height: 100vh; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,13,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    header { position: sticky; top: 0; z-index: 100; background: var(--bg-header); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
     .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; user-select: none; }
     .logo-icon { width: 36px; height: 36px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #111; }
@@ -41,9 +43,9 @@
     .btn-nav { background: var(--bg-surface); border: 1px solid var(--border); color: var(--text-secondary); border-radius: var(--radius-sm); padding: 8px 16px; font-family: inherit; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all var(--transition); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
     .btn-nav:hover { border-color: var(--accent); color: var(--accent); }
     .hero { max-width: 1280px; margin: 0 auto; padding: 48px 24px 32px; }
-    .hero-inner { background: linear-gradient(135deg, #141414 0%, #0f1f18 100%); border: 1px solid var(--border); border-radius: 20px; padding: 56px 48px; position: relative; overflow: hidden; }
+    .hero-inner { background: linear-gradient(135deg, #151515 0%, var(--background) 100%); border: 1px solid var(--border); border-radius: 20px; padding: 56px 48px; position: relative; overflow: hidden; }
     .hero-inner::before { content: ''; position: absolute; top: -60px; right: -60px; width: 320px; height: 320px; background: radial-gradient(circle, #4ce6b81e 0%, transparent 70%); pointer-events: none; }
-    .hero-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(0,229,160,0.1); border: 1px solid rgba(0,229,160,0.2); border-radius: 999px; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 20px; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 6px; background: #152722; border: 1px solid #204e40; border-radius: 999px; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 20px; }
     .hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
     .hero h1 em { font-style: normal; color: var(--accent); }
     .hero p { color: var(--text-secondary); font-size: 1.05rem; max-width: 480px; margin-bottom: 28px; }
@@ -53,16 +55,19 @@
     .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
     .section-title { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; }
     .section-title span { color: var(--accent); }
-    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; align-items: center; }
     .filter-btn { background: var(--bg-surface); border: 1px solid var(--border); color: var(--text-secondary); border-radius: 999px; padding: 6px 18px; font-family: inherit; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all var(--transition); }
     .filter-btn:hover, .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #111; font-weight: 700; }
+    .filter-subs { display: none; gap: 6px; flex-wrap: wrap; }
+    .filter-subs.visible { display: flex; }
+    .filter-sub { font-size: 0.78rem; padding: 4px 14px; border-style: dashed; }
     .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
     .product-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition); display: flex; flex-direction: column; }
     .product-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 40px #4ce6b81a; }
-    .card-carousel { position: relative; width: 100%; aspect-ratio: 4/3; overflow: hidden; background: #111; touch-action: pan-y; }
+    .card-carousel { position: relative; width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #111; touch-action: pan-y; }
     .card-carousel .slides { display: flex; width: 100%; height: 100%; will-change: transform; transition: transform 0.35s ease; transform: translate3d(0,0,0); }
-    .card-carousel .slide { width: 100%; min-width: 100%; max-width: 100%; height: 100%; flex: 0 0 100%; object-fit: cover; user-select: none; pointer-events: none; }
-    .card-carousel video.slide { object-fit: cover; pointer-events: none; }
+    .card-carousel .slide { width: 100%; min-width: 100%; max-width: 100%; height: 100%; flex: 0 0 100%; object-fit: contain; user-select: none; pointer-events: none; background: #111; }
+    .card-carousel video.slide { object-fit: contain; pointer-events: none; }
     .card-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; }
     .card-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.35); transition: background var(--transition); }
     .card-dot.active { background: var(--accent); }
@@ -84,11 +89,12 @@
     .modal { background: var(--bg-surface); border: 1px solid var(--border); border-radius: 20px; width: 100%; max-width: 900px; max-height: 90vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; transform: scale(0.95) translateY(16px); transition: transform 0.3s ease; position: relative; }
     .modal-overlay.open .modal { transform: scale(1) translateY(0); }
     @media (max-width: 640px) { .modal { grid-template-columns: 1fr; } }
-    .modal-carousel { position: relative; background: #111; border-radius: 20px 0 0 20px; overflow: hidden; min-height: 340px; touch-action: pan-y; }
+    .modal-carousel { position: relative; background: #111; border-radius: 20px 0 0 20px; overflow: hidden; min-height: 340px; touch-action: pan-y; display: flex; align-items: stretch; }
     @media (max-width: 640px) { .modal-carousel { border-radius: 20px 20px 0 0; min-height: 260px; } }
     .modal-carousel .slides { display: flex; width: 100%; height: 100%; will-change: transform; transition: transform 0.35s ease; transform: translate3d(0,0,0); }
-    .modal-carousel .slide { flex: 0 0 100%; width: 100%; min-width: 100%; max-width: 100%; height: 100%; object-fit: cover; user-select: none; -webkit-user-drag: none; pointer-events: none; }
-    .modal-carousel video.slide { object-fit: contain; background: #000; pointer-events: auto; }
+    .modal-carousel .slide { flex: 0 0 100%; width: 100%; min-width: 100%; max-width: 100%; height: 100%; object-fit: contain; user-select: none; -webkit-user-drag: none; pointer-events: none; background: #111; cursor: zoom-in; }
+    .modal-carousel .slide.zoomed { object-fit: cover; cursor: zoom-out; }
+    .modal-carousel video.slide { object-fit: contain; background: #000; pointer-events: auto; cursor: default; }
     .modal-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1); color: #fff; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background var(--transition); z-index: 2; }
     .modal-arrow:hover { background: var(--accent); color: #111; }
     .modal-arrow.prev { left: 12px; }
@@ -104,8 +110,8 @@
     .modal-price-row { display: flex; align-items: baseline; gap: 12px; }
     .modal-price { font-size: 2rem; font-weight: 700; font-family: 'DM Mono', monospace; color: var(--text-primary); }
     .modal-price-old { font-size: 1rem; color: var(--text-muted); text-decoration: line-through; font-family: 'DM Mono', monospace; }
-    .modal-discount-badge { background: rgba(0,229,160,0.15); color: var(--accent); border: 1px solid rgba(0,229,160,0.25); border-radius: 6px; padding: 2px 10px; font-size: 0.8rem; font-weight: 700; }
-    .modal-desc { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; }
+    .modal-discount-badge { background: #162e27; color: var(--accent); border: 1px solid #1d4338; border-radius: 6px; padding: 2px 10px; font-size: 0.8rem; font-weight: 700; }
+    .modal-desc { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
     .modal-divider { border: none; border-top: 1px solid var(--border); }
     .modal-attrs { display: flex; flex-direction: column; gap: 10px; }
     .modal-attr { display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem; }
@@ -172,15 +178,41 @@
   </div>
 </div>
 
-<footer><p>© 2026 <strong>MinhaLoja</strong>. Todos os direitos reservados. · Powered by HyperLens · Powered by <strong>HyperLens</strong></p></footer>
+<footer><p>© 2026 <strong>MinhaLoja</strong>. Todos os direitos reservados. · Powered by <strong>HyperLens</strong></p></footer>
 
 <script>
 const PRODUCTS = [];
 /* ================================================================
    FIM DA LISTA DE PRODUTOS
 ================================================================ */
+const CATEGORIES = [];
+/* ================================================================ */
 const grid = document.getElementById('productGrid');
 let currentFilter = 'todos';
+
+function renderGrid(filter = 'todos') {
+  grid.innerHTML = '';
+  // filter matches product cat directly, or if parent selected: also match all children of that parent
+  const childKeys = CATEGORIES.filter(c => c.parentKey === filter).map(c => c.key);
+  const filtered = PRODUCTS.filter(p => filter === 'todos' || p.cat === filter || childKeys.includes(p.cat));
+  if (!filtered.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 24px;gap:24px;text-align:center">
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="120" height="120" rx="24" fill="#161616"/>
+        <path d="M30 45L40 30H80L90 45V90C90 92.2 88.2 94 86 94H34C31.8 94 30 92.2 30 90V45Z" stroke="#4ce6b8" stroke-width="3" fill="none"/>
+        <path d="M30 45H90" stroke="#4ce6b8" stroke-width="3"/>
+        <path d="M72 55C72 63.8 66.6 71 60 71C53.4 71 48 63.8 48 55" stroke="#4ce6b8" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="60" cy="38" r="4" fill="#4ce6b8" opacity="0.4"/>
+      </svg>
+      <div>
+        <p style="color:#f0f0f0;font-size:1rem;font-weight:600;margin-bottom:8px">Nenhum produto encontrado</p>
+        <p style="color:var(--text-secondary);font-size:0.9rem;max-width:420px">Você não possui itens cadastrados, acesse o painel administrativo para cadastrar e começar a vender como afiliado.</p>
+      </div>
+    </div>`;
+    return;
+  }
+  filtered.forEach(p => grid.appendChild(buildCard(p)));
+}
 
 function buildMediaSlide(media) {
   if (media.mediaKind === 'video') {
@@ -190,6 +222,9 @@ function buildMediaSlide(media) {
 }
 
 function buildCard(p) {
+  // Resolve display name for this product's category
+  const catObj = CATEGORIES.find(c => c.key === p.cat);
+  const catLabel = catObj ? catObj.name : p.cat;
   const allMedia = p.images || [];
   const hasMany = allMedia.length > 1;
   const card = document.createElement('div'); card.className = 'product-card'; card.dataset.cat = p.cat;
@@ -198,7 +233,7 @@ function buildCard(p) {
   const arrows = hasMany ? `<button class="carousel-arrow prev" aria-label="Anterior">&#8592;</button><button class="carousel-arrow next" aria-label="Próxima">&#8594;</button>` : '';
   const badge = p.badge ? `<span class="card-badge">-${p.badge}</span>` : '';
   const oldP = p.oldPrice ? `<span class="card-price-old">${p.oldPrice}</span>` : '';
-  card.innerHTML = `<div class="card-carousel"><div class="slides">${slides}</div>${arrows}<div class="card-dots">${dots}</div>${badge}</div><div class="card-body"><div class="card-category">${p.cat}</div><div class="card-title">${p.title}</div><div class="card-price-row"><span class="card-price">${p.price}</span>${oldP}</div><button class="card-cta">Ver detalhes</button></div>`;
+  card.innerHTML = `<div class="card-carousel"><div class="slides">${slides}</div>${arrows}<div class="card-dots">${dots}</div>${badge}</div><div class="card-body"><div class="card-category">${catLabel}</div><div class="card-title">${p.title}</div><div class="card-price-row"><span class="card-price">${p.price}</span>${oldP}</div><button class="card-cta">Ver detalhes</button></div>`;
   let cur = 0; const slideTrack = card.querySelector('.slides'); const dotsEl = card.querySelectorAll('.card-dot');
   function goTo(n) {
     const prevVideo = slideTrack.querySelectorAll('video')[cur];
@@ -217,34 +252,33 @@ function buildCard(p) {
   card.addEventListener('click', () => openModal(p));
   return card;
 }
-function renderGrid(filter = 'todos') {
-  grid.innerHTML = '';
-  const filtered = PRODUCTS.filter(p => filter === 'todos' || p.cat === filter);
-  if (!filtered.length) {
-    grid.innerHTML = `<div style="grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 24px;gap:24px;text-align:center">
-      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="120" height="120" rx="24" fill="#161616"/>
-        <path d="M30 45L40 30H80L90 45V90C90 92.2 88.2 94 86 94H34C31.8 94 30 92.2 30 90V45Z" stroke="#00E5A0" stroke-width="3" fill="none"/>
-        <path d="M30 45H90" stroke="#00E5A0" stroke-width="3"/>
-        <path d="M72 55C72 63.8 66.6 71 60 71C53.4 71 48 63.8 48 55" stroke="#00E5A0" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="60" cy="38" r="4" fill="#00E5A0" opacity="0.4"/>
-      </svg>
-      <div>
-        <p style="color:#f0f0f0;font-size:1rem;font-weight:600;margin-bottom:8px">Nenhum produto encontrado</p>
-        <p style="color:#888;font-size:0.9rem;max-width:420px">Você não possui itens cadastrados, acesse o painel administrativo para cadastrar e começar a vender como afiliado.</p>
-      </div>
-    </div>`;
-    return;
-  }
-  filtered.forEach(p => grid.appendChild(buildCard(p)));
-}
+
 renderGrid();
-document.getElementById('filterBar').addEventListener('click', e => { const btn = e.target.closest('.filter-btn'); if (!btn) return; document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); currentFilter = btn.dataset.cat; renderGrid(currentFilter); });
+document.getElementById('filterBar').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter = btn.dataset.cat;
+  renderGrid(currentFilter);
+  // Show/hide subcategory rows
+  document.querySelectorAll('.filter-subs').forEach(el => el.classList.remove('visible'));
+  if (btn.dataset.hasSubs) {
+    const subsEl = document.querySelector(`.filter-subs[data-owner="${btn.dataset.cat}"]`);
+    if (subsEl) subsEl.classList.add('visible');
+  } else if (btn.dataset.parent) {
+    // Sub selected: keep parent subs visible
+    const subsEl = document.querySelector(`.filter-subs[data-owner="${btn.dataset.parent}"]`);
+    if (subsEl) subsEl.classList.add('visible');
+  }
+});
 document.getElementById('searchInput').addEventListener('input', function() { const q = this.value.toLowerCase().trim(); document.querySelectorAll('.product-card').forEach(card => { const title = card.querySelector('.card-title').textContent.toLowerCase(); card.style.display = title.includes(q) ? '' : 'none'; }); });
 let mCur = 0; let mProduct = null;
 function openModal(p) {
   mProduct = p; mCur = 0;
-  document.getElementById('mCat').textContent = p.cat;
+  // Resolve category display name (subcategory name if applicable)
+  const catObj = CATEGORIES.find(c => c.key === p.cat);
+  document.getElementById('mCat').textContent = catObj ? catObj.name : p.cat;
   document.getElementById('mTitle').textContent = p.title;
   document.getElementById('mDesc').textContent = p.desc;
   const fmtP = v => v && v !== 'R$ ' && v.replace(/[^0-9]/g,'') ? (String(v).startsWith('R$') ? v : 'R$ ' + v) : v;
@@ -259,7 +293,7 @@ function openModal(p) {
   const allMedia = p.images || [];
   const slides = document.getElementById('modalSlides');
   slides.innerHTML = allMedia.map((m,i) => m.mediaKind==='video'
-    ? `<video class="slide" src="${m.url}" ${i===0?'autoplay':''}  muted loop playsinline controls style="pointer-events:auto"></video>`
+    ? `<video class="slide" src="${m.url}" muted loop playsinline controls style="pointer-events:auto"></video>`
     : `<img class="slide" src="${m.url}" alt="${p.title} ${i+1}" />`
   ).join('');
   const dotsEl = document.getElementById('modalDots');
@@ -281,7 +315,23 @@ function goModal(n) {
 }
 document.getElementById('mPrev').addEventListener('click', () => goModal(mCur-1));
 document.getElementById('mNext').addEventListener('click', () => goModal(mCur+1));
-function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; mProduct = null; }
+function closeModal() {
+  const overlay = document.getElementById('modalOverlay');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  // Pause and destroy all videos so they can't keep playing in background
+  const slidesEl = document.getElementById('modalSlides');
+  slidesEl.querySelectorAll('video').forEach(v => { v.pause(); v.src = ''; v.load(); });
+  // Clear slides after transition completes so DOM is clean
+  setTimeout(() => { slidesEl.innerHTML = ''; }, 350);
+  mProduct = null;
+}
+document.getElementById('modalCarousel').addEventListener('click', e => {
+  const img = e.target;
+  if (img.tagName === 'IMG' && img.classList.contains('slide')) {
+    img.classList.toggle('zoomed');
+  }
+});
 document.getElementById('modalClose').addEventListener('click', closeModal);
 document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === document.getElementById('modalOverlay')) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
